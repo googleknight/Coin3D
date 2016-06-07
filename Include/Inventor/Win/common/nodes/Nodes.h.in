@@ -1,0 +1,56 @@
+#ifndef COIN_SOGUINODES_H
+#define COIN_SOGUINODES_H
+
+// @configure_input@
+
+/**************************************************************************\
+ *
+ *  This file is part of the Coin 3D visualization library.
+ *  Copyright (C) by Kongsberg Oil & Gas Technologies.
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License
+ *  ("GPL") version 2 as published by the Free Software Foundation.
+ *  See the file LICENSE.GPL at the root directory of this source
+ *  distribution for additional information about the GNU GPL.
+ *
+ *  For using Coin with software that can not be combined with the GNU
+ *  GPL, and for taking advantage of the additional benefits of our
+ *  support services, please contact Kongsberg Oil & Gas Technologies
+ *  about acquiring a Coin Professional Edition License.
+ *
+ *  See http://www.coin3d.org/ for more information.
+ *
+ *  Kongsberg Oil & Gas Technologies, Bygdoy Alle 5, 0257 Oslo, NORWAY.
+ *  http://www.sim.no/  sales@sim.no  coin-support@coin3d.org
+ *
+\**************************************************************************/
+
+#ifndef SO@GUI@_INTERNAL
+#error this is a private header file
+#endif /* !SO@GUI@_INTERNAL */
+
+#include <Inventor/@Gui@/nodes/SoGuiSceneTexture2.h>
+#include <Inventor/@Gui@/nodes/SoGuiViewportFix.h>
+#include <Inventor/@Gui@/nodes/SoGuiPane.h>
+#include <Inventor/@Gui@/nodes/SoGuiPosition.h>
+#include <Inventor/@Gui@/nodes/SoGuiTranslation.h>
+#include <Inventor/@Gui@/nodes/SoGuiFrame.h>
+#include <Inventor/@Gui@/nodes/SoGuiImage.h>
+#include <Inventor/@Gui@/nodes/SoGuiLabel.h>
+#include <Inventor/@Gui@/nodes/SoGuiToggleButton.h>
+#include <Inventor/@Gui@/nodes/SoGuiRadioButton.h>
+#include <Inventor/@Gui@/nodes/SoGuiClickCounter.h>
+#include <Inventor/@Gui@/nodes/SoGuiSlider1.h>
+#include <Inventor/@Gui@/nodes/SoGuiSlider2.h>
+#include <Inventor/@Gui@/nodes/SoGuiColorEditor.h>
+#include <Inventor/@Gui@/nodes/SoGuiMaterialEditor.h>
+#include <Inventor/@Gui@/nodes/SoGuiViewpointWrapper.h>
+
+class SoGuiNodes {
+public:
+  static void initClasses(void);
+
+};
+
+#endif // !COIN_SOGUINODES_H

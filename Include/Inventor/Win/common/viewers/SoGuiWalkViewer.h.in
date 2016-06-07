@@ -1,0 +1,104 @@
+#ifndef SO@GUI@_WALKVIEWER_H
+#define SO@GUI@_WALKVIEWER_H
+
+// @configure_input@
+
+/**************************************************************************\
+ *
+ *  This file is part of the Coin 3D visualization library.
+ *  Copyright (C) by Kongsberg Oil & Gas Technologies.
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License
+ *  ("GPL") version 2 as published by the Free Software Foundation.
+ *  See the file LICENSE.GPL at the root directory of this source
+ *  distribution for additional information about the GNU GPL.
+ *
+ *  For using Coin with software that can not be combined with the GNU
+ *  GPL, and for taking advantage of the additional benefits of our
+ *  support services, please contact Kongsberg Oil & Gas Technologies
+ *  about acquiring a Coin Professional Edition License.
+ *
+ *  See http://www.coin3d.org/ for more information.
+ *
+ *  Kongsberg Oil & Gas Technologies, Bygdoy Alle 5, 0257 Oslo, NORWAY.
+ *  http://www.sim.no/  sales@sim.no  coin-support@coin3d.org
+ *
+\**************************************************************************/
+
+#include <Inventor/@Gui@/viewers/So@Gui@ConstrainedViewer.h>
+
+class SO@GUI@_DLL_API So@Gui@WalkViewer : public So@Gui@ConstrainedViewer {
+  SO@GUI@_OBJECT_HEADER(So@Gui@WalkViewer, So@Gui@ConstrainedViewer);
+
+public:
+  So@Gui@WalkViewer(@WIDGET@ parent = NULL,
+                    const char * name = NULL,
+                    SbBool embed = TRUE,
+                    So@Gui@FullViewer::BuildFlag flag = BUILD_ALL,
+                    So@Gui@Viewer::Type type = BROWSER);
+  ~So@Gui@WalkViewer();
+
+  virtual void setViewing(SbBool enable);
+  virtual void setCamera(SoCamera * camera);
+  virtual void setCursorEnabled(SbBool enable);
+
+  virtual void setCameraType(SoType type);
+
+protected:
+  So@Gui@WalkViewer(@WIDGET@ parent,
+                    const char * name,
+                    SbBool embed,
+                    So@Gui@FullViewer::BuildFlag flag,
+                    So@Gui@Viewer::Type type,
+                    SbBool build);
+
+  virtual const char * getDefaultWidgetName(void) const;
+  virtual const char * getDefaultTitle(void) const;
+  virtual const char * getDefaultIconTitle(void) const;
+
+  virtual void processEvent(@EVENT@ event);
+
+  virtual void setSeekMode(SbBool enable);
+  virtual void actualRedraw(void);
+
+  virtual void rightWheelMotion(float value);
+
+  virtual @WIDGET@ buildLeftTrim(@WIDGET@ parent);
+
+private:
+  class So@Gui@WalkViewerP * pimpl;
+  friend class SoGuiWalkViewerP;
+  friend class So@Gui@WalkViewerP;
+
+/// FIXME!: merge the So*WalkViewer.h parts in properly. 20020109 mortene. ////
+
+#ifdef __COIN_SOXT__
+protected:
+  virtual void leftWheel2Start(void);
+  virtual void leftWheel2Motion(float value);
+  virtual void leftWheel2Finish(void);
+  float getLeftWheel2Value(void) const;
+  void setLeftWheel2String(char * string);
+
+private:
+  void constructor(SbBool build);
+
+  Widget heightwheel;
+  float heightvalue;
+
+  void wheelarmed(void);
+  static void wheelarmedCB(Widget, XtPointer, XtPointer);
+  void wheelchanged(float value);
+  static void wheelchangedCB(Widget, XtPointer, XtPointer);
+  void wheeldisarmed(void);
+  static void wheeldisarmedCB(Widget, XtPointer, XtPointer);
+#endif // ! __COIN_SOXT__
+
+#ifdef __COIN_SOGTK__
+private:
+  void constructor(const SbBool build);
+#endif // ! __COIN_SOGTK__
+};
+
+#endif // ! SO@GUI@_WALKVIEWER_H

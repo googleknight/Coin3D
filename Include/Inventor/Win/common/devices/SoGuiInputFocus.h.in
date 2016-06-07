@@ -1,0 +1,61 @@
+#ifndef SO@GUI@_INPUTFOCUS_H
+#define SO@GUI@_INPUTFOCUS_H
+
+// @configure_input@
+
+/**************************************************************************\
+ *
+ *  This file is part of the Coin 3D visualization library.
+ *  Copyright (C) by Kongsberg Oil & Gas Technologies.
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License
+ *  ("GPL") version 2 as published by the Free Software Foundation.
+ *  See the file LICENSE.GPL at the root directory of this source
+ *  distribution for additional information about the GNU GPL.
+ *
+ *  For using Coin with software that can not be combined with the GNU
+ *  GPL, and for taking advantage of the additional benefits of our
+ *  support services, please contact Kongsberg Oil & Gas Technologies
+ *  about acquiring a Coin Professional Edition License.
+ *
+ *  See http://www.coin3d.org/ for more information.
+ *
+ *  Kongsberg Oil & Gas Technologies, Bygdoy Alle 5, 0257 Oslo, NORWAY.
+ *  http://www.sim.no/  sales@sim.no  coin-support@coin3d.org
+ *
+\**************************************************************************/
+
+#include <Inventor/@Gui@/devices/So@Gui@Device.h>
+
+// *************************************************************************
+
+class SO@GUI@_DLL_API So@Gui@InputFocus : public So@Gui@Device {
+  SO@GUI@_OBJECT_HEADER(So@Gui@InputFocus, So@Gui@Device);
+
+public:
+  enum Events {
+    ENTER_WINDOW = 1 << 0,
+    LEAVE_WINDOW = 1 << 1,
+    ALL_EVENTS   = ENTER_WINDOW | LEAVE_WINDOW
+  };
+
+  So@Gui@InputFocus(int mask = ALL_EVENTS);
+  virtual ~So@Gui@InputFocus();
+
+  virtual void enable(@WIDGET@ widget, So@Gui@EventHandler * handler, void * closure);
+  virtual void disable(@WIDGET@ widget, So@Gui@EventHandler * handler, void * closure);
+
+  virtual const SoEvent * translateEvent(@EVENT@ event);
+
+private:
+  class So@Gui@InputFocusP * pimpl;
+  friend class SoGuiInputFocusP;
+  friend class So@Gui@InputFocusP;
+};
+
+#define SO_@GUI@_ALL_FOCUS_EVENTS So@Gui@InputFocus::ALL_EVENTS;
+
+// *************************************************************************
+
+#endif // ! SO@GUI@_INPUTFOCUS_H

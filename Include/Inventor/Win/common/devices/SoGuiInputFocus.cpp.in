@@ -1,0 +1,93 @@
+// @configure_input@
+
+/**************************************************************************\
+ *
+ *  This file is part of the Coin 3D visualization library.
+ *  Copyright (C) by Kongsberg Oil & Gas Technologies.
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License
+ *  ("GPL") version 2 as published by the Free Software Foundation.
+ *  See the file LICENSE.GPL at the root directory of this source
+ *  distribution for additional information about the GNU GPL.
+ *
+ *  For using Coin with software that can not be combined with the GNU
+ *  GPL, and for taking advantage of the additional benefits of our
+ *  support services, please contact Kongsberg Oil & Gas Technologies
+ *  about acquiring a Coin Professional Edition License.
+ *
+ *  See http://www.coin3d.org/ for more information.
+ *
+ *  Kongsberg Oil & Gas Technologies, Bygdoy Alle 5, 0257 Oslo, NORWAY.
+ *  http://www.sim.no/  sales@sim.no  coin-support@coin3d.org
+ *
+\**************************************************************************/
+
+/*!
+  \class So@Gui@InputFocus So@Gui@InputFocus.h Inventor/@Gui@/devices/So@Gui@InputFocus.h
+  \brief The So@Gui@InputFocus class is an abstraction for widget focus events as an input device.
+  \ingroup devices
+
+  This device class is a "virtual device" which can be used to get
+  events when the mouse pointer enters or leaves a specific widget.
+*/
+
+// *************************************************************************
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif // HAVE_CONFIG_H
+
+#include <Inventor/@Gui@/devices/So@Gui@InputFocus.h>
+#include <Inventor/@Gui@/devices/SoGuiInputFocusP.h>
+
+// *************************************************************************
+
+SO@GUI@_OBJECT_SOURCE(So@Gui@InputFocus);
+
+// *************************************************************************
+
+/*!
+  \enum So@Gui@InputFocus::Events
+
+  Bit-wise enumeration over events handled by the So@Gui@InputFocus
+  device class.  Used in the So@Gui@InputFocus constructor.
+*/
+
+/*!
+  \var So@Gui@InputFocus::Events So@Gui@InputFocus::ENTER_WINDOW
+
+  Maskbit for receiving events when focus comes to a widget.
+*/
+
+/*!
+  \var So@Gui@InputFocus::Events So@Gui@InputFocus::LEAVE_WINDOW
+
+  Maskbit for receiving events when focus leaves a widget.
+*/
+
+/*!
+  \var So@Gui@InputFocus::Events So@Gui@InputFocus::ALL_EVENTS
+
+  Combined bitmask for all possible events.
+*/
+
+/*!
+  \fn So@Gui@InputFocus::So@Gui@InputFocus(int mask)
+
+  Constructor. The \a mask specifies which focus-related events to
+  handle. Others will just be ignored.
+*/
+
+// *************************************************************************
+
+SoGuiInputFocusP::SoGuiInputFocusP(So@Gui@InputFocus * p)
+{
+  this->pub = p;
+}
+
+SoGuiInputFocusP::~SoGuiInputFocusP()
+{
+}
+
+// *************************************************************************

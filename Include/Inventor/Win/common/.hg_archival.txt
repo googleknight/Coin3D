@@ -1,0 +1,5 @@
+repo: 14ca99190cb55f414982b9a037817ced369b28a3
+node: e56e9948b4c6db9979d4646564c90c649c2f7314
+branch: default
+latesttag: soqt-1_4_0
+latesttagdistance: 51
